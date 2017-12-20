@@ -1,25 +1,41 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="ru">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
-
 <body>
-  <p>Welcome to the chat app</p>
 
-  <ol id="messages"></ol>
+  <section class="chat">
 
-  <form id="message-form">
-    <input type="text" name="message" placeholder="Сообщение">
-    <button>Отправить</button>
-  </form>
-  <button id="send-location">Отправить местоположение</button>
+    <div class="chat__output">
+      
+      <h1 class="chat__title">Добро пожаловать</h1>
+      
+      <ul id="messages"></ul>
+    
+    </div>
+
+    <div class="chat__controls">
+      
+      <form class="chat__form" id="message-form">
+        <input class="chat__message" type="text" name="message" placeholder="Сообщение" autofocus autocomplete="off">
+        <button class="chat__send">Отправить</button>
+      </form>
+
+      <button class="chat__location" id="send-location">Отправить местоположение</button>
+    
+    </div>
+
+  </section>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
   <script src="/js/index.js"></script>
-</body>
 
+</body>
 </html>
