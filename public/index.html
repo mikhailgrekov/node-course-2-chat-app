@@ -33,9 +33,32 @@
 
   </section>
 
+  <script id="message-template" type="text/template">
+    <li class="message">
+      <div class="message__title">
+        <span>{{from}}</span>
+        <span>{{createdAt}}</span>
+      </div>
+      <div class="message__body"></div>
+        <span>{{text}}</span>
+    </li>
+  </script>
+
+  <script id="location-message-template" type="text/template">
+    <li class="message">
+      <div class="message__title">
+        <span>{{from}}</span>
+        <span>{{createdAt}}</span>
+      </div>
+      <div class="message__body"></div>
+        <a href="{{url}}" target="_blank">Мое текущее местоположение</a>
+    </li>
+  </script>
+
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/libs/jquery-3.2.1.min.js"></script>  
   <script src="/js/libs/moment.js"></script>
+  <script src="/js/libs/mustache.js"></script>
   <script src="/js/index.js"></script>
 
 </body>
