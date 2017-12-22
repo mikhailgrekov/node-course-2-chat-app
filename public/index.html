@@ -11,14 +11,8 @@
 <body>
 
   <section class="chat">
-
-    <div class="chat__output">
       
-      <h1 class="chat__title">Добро пожаловать в чат</h1>
-      
-      <ul id="messages"></ul>
-    
-    </div>
+    <ul class="chat__output" id="messages"></ul>
 
     <div class="chat__controls">
       
@@ -36,8 +30,8 @@
   <script id="message-template" type="text/template">
     <li class="message">
       <div class="message__title">
-        <span>{{from}}</span>
-        <span>{{createdAt}}</span>
+        <span class="message__title-content">{{from}}</span>
+        <span class="message__title-time">{{createdAt}}</span>
       </div>
       <div class="message__body"></div>
         <span>{{text}}</span>
@@ -47,8 +41,8 @@
   <script id="location-message-template" type="text/template">
     <li class="message">
       <div class="message__title">
-        <span>{{from}}</span>
-        <span>{{createdAt}}</span>
+        <span class="message__title-content">{{from}}</span>
+        <span class="message__title-time">{{createdAt}}</span>
       </div>
       <div class="message__body"></div>
         <a href="{{url}}" target="_blank">Мое текущее местоположение</a>
