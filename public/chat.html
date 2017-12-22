@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat | ChatApp</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <section class="wrapper">
+      
+    <ul class="chat-output" id="messages"></ul>
+
+    <div class="chat-controls">
+      
+      <form class="chat-form" id="message-form">
+        <input class="form-field form-field_message" type="text" name="message" placeholder="Сообщение" autofocus autocomplete="off">
+        <button class="form-btn form-btn_send">Отправить</button>
+      </form>
+
+      <button class="form-btn form-btn_location" id="send-location">Отправить местоположение</button>
+    
+    </div>
+
+  </section>
+
+  <script id="message-template" type="text/template">
+    <li class="message">
+      <div class="message__title">
+        <span class="message__title-content">{{from}}</span>
+        <span class="message__title-time">{{createdAt}}</span>
+      </div>
+      <div class="message__body"></div>
+        <span>{{text}}</span>
+    </li>
+  </script>
+
+  <script id="location-message-template" type="text/template">
+    <li class="message">
+      <div class="message__title">
+        <span class="message__title-content">{{from}}</span>
+        <span class="message__title-time">{{createdAt}}</span>
+      </div>
+      <div class="message__body"></div>
+        <a href="{{url}}" target="_blank">Мое текущее местоположение</a>
+    </li>
+  </script>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/libs/jquery-3.2.1.min.js"></script>  
+  <script src="/js/libs/moment.js"></script>
+  <script src="/js/libs/mustache.js"></script>
+  <script src="/js/chat.js"></script>
+
+</body>
+</html>
