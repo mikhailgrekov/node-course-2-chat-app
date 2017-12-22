@@ -1,3 +1,7 @@
+html, body, .wrapper {
+    height: 100%;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -5,7 +9,6 @@ body {
 
 .wrapper {
     width: 100vw;
-    height: 100vh;
     font: 16px/22px 'Arial', sans-serif;
     color: #323232;
     box-sizing: border-box;
