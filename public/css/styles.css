@@ -7,12 +7,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+
 .wrapper {
     width: 100vw;
     font: 16px/22px 'Arial', sans-serif;
     color: #323232;
     box-sizing: border-box;
     background: linear-gradient(-146deg, rgb(124, 177, 214), rgb(176, 220, 230));
+    position: relative;
 }
 
 .wrapper_join {
@@ -23,10 +26,24 @@ body {
 
 .chat-output {
     width: 100%;
-    padding: 20px;
+    padding: 60px 20px 20px;
     box-sizing: border-box;
     overflow-x: hidden;
-    overflow-y: auto; 
+    overflow-y: scroll; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.back-btn {
+    position: absolute;
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+    user-select: none;
+    top: 20px;
+    left: 20px;
 }
 
 
@@ -46,11 +63,13 @@ body {
     justify-content: space-between;
 }
 
+
+
 .join-form {
     background: rgb(157, 183, 194);
     border-radius: 5px;
     box-sizing: border-box;
-    padding: 25px;
+    padding: 25px 25px 15px;
     display: flex;
     flex-direction: column;
     max-width: 300px;
@@ -72,6 +91,9 @@ body {
     margin-bottom: 10px;
 }
 
+
+
+
 .form-field, .form-btn {
     font: 14px 'Arial', sans-serif;
     box-sizing: border-box;
@@ -79,6 +101,7 @@ body {
     height: 50px;
     white-space: nowrap;
     border: none;
+    border-radius: 3px;
 }
 
 .form-field-text {
@@ -86,7 +109,7 @@ body {
 }
 
 .form-field {
-    color: #323232;
+    color: inherit;
 }
 
 .form-field_join, .form-btn_join {
@@ -98,13 +121,10 @@ body {
     cursor: pointer;
     color: white;
     outline: none;
+    user-select: none;
 }
 
 .form-btn:active {
-    background: rgb(40, 68, 114);
-}
-
-.chat-send:active {
     background: rgb(40, 68, 114);
 }
 
@@ -124,7 +144,12 @@ body {
 
 
 .message {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    background: rgb(187, 218, 223);
+    box-sizing: border-box;
+    padding: 10px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
 }
 
 .message__title-content {
@@ -134,6 +159,9 @@ body {
 .message__title-time {
     opacity: .5;
 }
+
+
+
 
 @media(min-width: 721px) {
 

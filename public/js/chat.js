@@ -14,15 +14,34 @@ function scrollToBottom () {
   }
 };
 
-socket.on('connect', function () {
-  console.log('Connected to server');
+socket.on('connect', function() {
+  var params = $.deparam(window.location.search);
+
+  socket.emit('join', params, function(err) {
+    if (err) {
+      alert(err);
+      window.location.href = '/';
+    } else {
+      console.log('no err')
+    }
+  });
 });
 
-socket.on('disconnect', function () {
+socket.on('disconnect', function() {
   console.log('Disconnected from server');
 });
 
-socket.on('newMessage', function (message) {
+socket.on('updateUserList', function(users) {
+  var ul = $('<ul></ul>');
+
+  users.forEach(function(user) {
+    ul.append($('<li></li>').text(user));
+  });
+
+  $('#users').html(ul);
+});
+
+socket.on('newMessage', function(message) {
   var formattedTime = moment(message.createdAt).format('H:mm');  
   var template = $('#message-template').html();
   
@@ -36,7 +55,7 @@ socket.on('newMessage', function (message) {
   scrollToBottom();
 });
 
-socket.on('newLocationMessage', function (message) {
+socket.on('newLocationMessage', function(message) {
   var formattedTime = moment(message.createdAt).format('H:mm');
   var template = $('#location-message-template').html();
 
@@ -50,7 +69,7 @@ socket.on('newLocationMessage', function (message) {
   scrollToBottom();
 });
 
-$('#message-form').on('submit', function (e) {
+$('#message-form').on('submit', function(e) {
   e.preventDefault();
 
   var messageTextbox = $('[name=message]');
@@ -58,26 +77,26 @@ $('#message-form').on('submit', function (e) {
   socket.emit('createMessage', {
     from: 'User',
     text: messageTextbox.val()
-  }, function () {
+  }, function() {
     messageTextbox.val('');
   });
 });
 
 var locationButton = $('#send-location');
-$('#send-location').on('click', function () {
+$('#send-location').on('click', function() {
   if (!navigator.geolocation) {
     return alert('Геолокация не поддерживается вашим браузером.');
   }
 
   locationButton.attr('disabled', 'disabled').text('Отправка местоположения');
 
-  navigator.geolocation.getCurrentPosition(function (position) {
+  navigator.geolocation.getCurrentPosition(function(position) {
     locationButton.removeAttr('disabled').text('Отправить местоположение');
     socket.emit('createLocationMessage', {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     });
-  }, function () {
+  }, function() {
     locationButton.removeAttr('disabled').text('Отправить местоположение');
     alert('Не удалось найти местоположение.');
   });
