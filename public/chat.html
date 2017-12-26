@@ -10,12 +10,17 @@
 </head>
 <body>
 
-  <section class="wrapper">
+  <section class="wrapper wrapper_chat">
 
-    <ul id="users"></ul>
-
-    <a class="back-btn" href="/">&#9668; Назад</a>
-      
+    <aside class="chat-aside">
+      <a class="back-btn" href="/">&#9668; Назад</a>
+      <div id="users-wrapper" class="chat-aside__wrapper">
+        <h2 class="chat-aside__title">Участники</h2>
+        <div id="show-users-btn" class="users-btn"></div>
+        <div id="users"></div>
+      </div>
+    </aside>
+  
     <ul class="chat-output" id="messages"></ul>
 
     <div class="chat-controls">

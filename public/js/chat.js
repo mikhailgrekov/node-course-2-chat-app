@@ -1,5 +1,10 @@
 var socket = io();
 
+$('#show-users-btn').on('click', function() {
+  $('.chat-users').toggleClass('chat-users_active');
+});
+  
+
 function scrollToBottom () {
   var messages = $('#messages');
   var newMessage = messages.children('li:last-child');
@@ -32,10 +37,10 @@ socket.on('disconnect', function() {
 });
 
 socket.on('updateUserList', function(users) {
-  var ul = $('<ul></ul>');
+  var ul = $('<ul class="chat-users"></ul>');
 
   users.forEach(function(user) {
-    ul.append($('<li></li>').text(user));
+    ul.append($('<li class="chat-users__item"></li>').text(user));
   });
 
   $('#users').html(ul);
